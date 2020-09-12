@@ -1,0 +1,42 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #d9e4f0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+}
+
+.input {
+    text-align: center;
+    margin: 100px 0;
+}
+
+input[type='text'] {
+    height: 50px;
+    width: 600px;
+    background: #fff;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 5px;
+}
+
+button[type='submit'] {
+    border-style: double;
+    background-color: aqua;
+    color: #0f04ac;
+    padding: .1% 1%;
+    margin: 2% 0 auto;
+    border-radius: 10%;
+    font-weight: bold;
+    font-size: 20px;
+    height: 50px;
+}
+
+display {
+    text-align: center;
+}
