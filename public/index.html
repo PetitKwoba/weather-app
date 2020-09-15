@@ -1,65 +1,116 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Welcome to Firebase Hosting</title>
+<html lang="en">
 
-    <!-- update the version number as needed -->
-    <script defer src="/__/firebase/7.20.0/firebase-app.js"></script>
-    <!-- include only the Firebase features as you need -->
-    <script defer src="/__/firebase/7.20.0/firebase-auth.js"></script>
-    <script defer src="/__/firebase/7.20.0/firebase-database.js"></script>
-    <script defer src="/__/firebase/7.20.0/firebase-messaging.js"></script>
-    <script defer src="/__/firebase/7.20.0/firebase-storage.js"></script>
-    <!-- initialize the SDK after all desired features are loaded -->
-    <script defer src="/__/firebase/init.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Application</title>
+    <link rel="stylesheet" href="./css/styles.css">
 
-    <style media="screen">
-      body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
-      #message { background: white; max-width: 360px; margin: 100px auto 16px; padding: 32px 24px; border-radius: 3px; }
-      #message h2 { color: #ffa100; font-weight: bold; font-size: 16px; margin: 0 0 8px; }
-      #message h1 { font-size: 22px; font-weight: 300; color: rgba(0,0,0,0.6); margin: 0 0 16px;}
-      #message p { line-height: 140%; margin: 16px 0 24px; font-size: 14px; }
-      #message a { display: block; text-align: center; background: #039be5; text-transform: uppercase; text-decoration: none; color: white; padding: 16px; border-radius: 4px; }
-      #message, #message a { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); }
-      #load { color: rgba(0,0,0,0.4); text-align: center; font-size: 13px; }
-      @media (max-width: 600px) {
-        body, #message { margin-top: 0; background: white; box-shadow: none; }
-        body { border-top: 16px solid #ffa100; }
-      }
-    </style>
-  </head>
-  <body>
-    <div id="message">
-      <h2>Welcome</h2>
-      <h1>Firebase Hosting Setup Complete</h1>
-      <p>You're seeing this because you've successfully setup Firebase Hosting. Now it's time to go build something extraordinary!</p>
-      <a target="_blank" href="https://firebase.google.com/docs/hosting/">Open Hosting Documentation</a>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+    <link rel="manifest" href="./manifest.json">
+</head>
+
+<body>
+
+
+    <div class="container">
+
+        <div class="row">
+
+            <span class="d-flex align-items-center m-auto">
+                <img style="height: 3rem; " class="mr-2" src="./logo.png" alt="" />
+                <div class=" h3 py-3">Weather<span class="text-success">App</span></div>
+        </span>
+        <div class="col-12 ">
+            <button id="notification" class="btn btn-success mb-3">Push Notifications</button>
+
+            <form id="form">
+
+                <div class="content">
+                    <div class="search">
+                        <input type="text" id="input_field" class="search__input" aria-label="search" placeholder="enter a location">
+                        <button class="search__btn" aria-label="submit search"><i
+                                     class="fas fa-search"></i></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
     </div>
-    <p id="load">Firebase SDK Loading&hellip;</p>
 
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-        // // The Firebase SDK is initialized and available here!
-        //
-        // firebase.auth().onAuthStateChanged(user => { });
-        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
-        // firebase.messaging().requestPermission().then(() => { });
-        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
-        //
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
 
-        try {
-          let app = firebase.app();
-          let features = ['auth', 'database', 'messaging', 'storage'].filter(feature => typeof app[feature] === 'function');
-          document.getElementById('load').innerHTML = `Firebase SDK loaded with ${features.join(', ')}`;
-        } catch (e) {
-          console.error(e);
-          document.getElementById('load').innerHTML = 'Error loading the Firebase SDK, check the console.';
-        }
-      });
+    <div id="weather-content" class="row mt-3">
+
+        <!-- put your javascript content in here -->
+
+
+        <div class="col-10 col-md-6 m-auto col-lg-4 py-2">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title" id="name">Lagos</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Lat: <span id="lat" class="badge badge-info">3.79</span>, Lng: <span id="lng" class="badge badge-info">7.99</span> </h6>
+                    <p class="card-text">Humidity: <span id="humidity" style="color:cornflowerblue">200</span>, Temp: <span id="temp" style="color:cornflowerblue">300</span>, Desc:
+                        <span style="color:cornflowerblue" id="desc">Overly cloudy</span> </p>
+                    <p class="card-text">Pressure: <span style="color:cornflowerblue" id="pressure">200</span>, WDeg: <span style="color:cornflowerblue" id="wind-degree">240deg</span>, WSpeed: <span style="color:cornflowerblue" id="wind-speed">4.46</span></p>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-10 col-md-6 m-auto col-lg-4 py-2">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Lagos</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Lat: <span class="badge badge-info">3.79</span>, Lng:
+                        <span class="badge badge-info">7.99</span> </h6>
+                    <p class="card-text">Humidity: <span style="color:cornflowerblue">200</span>, Temp: <span style="color:cornflowerblue">300</span>, Desc:
+                        <span style="color:cornflowerblue">Overly cloudy</span>
+                    </p>
+                    <p class="card-text">Pressure: <span style="color:cornflowerblue">200</span>, WDeg: <span style="color:cornflowerblue">240deg</span>, WSpeed: <span style="color:cornflowerblue">4.46</span></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-10 col-md-6 m-auto col-lg-4 py-2">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Nairobi</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Lat: <span class="badge badge-info">3.79</span>, Lng:
+                        <span class="badge badge-info">7.99</span> </h6>
+                    <p class="card-text">Humidity: <span style="color:cornflowerblue">200</span>, Temp: <span style="color:cornflowerblue">300</span>, Desc:
+                        <span style="color:cornflowerblue">Overly cloudy</span>
+                    </p>
+                    <p class="card-text">Pressure: <span style="color:cornflowerblue">200</span>, WDeg: <span style="color:cornflowerblue">240deg</span>, WSpeed: <span style="color:cornflowerblue">4.46</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <script src="./app.js"></script>
+    <script src="./main.js"></script>
+
+
+    <!-- boostrap -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
     </script>
-  </body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="/__/firebase/7.20.0/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="/__/firebase/7.20.0/firebase-analytics.js"></script>
+
+    <!-- Initialize Firebase -->
+    <script src="/__/firebase/init.js"></script>
+
+</body>
+
 </html>
